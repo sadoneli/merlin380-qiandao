@@ -24,7 +24,15 @@ generate_cookie_conf(){
 	[ "$qiandao_kafan" == "1" ] && [ -n "$qiandao_kafan_setting" ] && echo -e "\"kafan\"=`echo $qiandao_kafan_setting | base64_decode`" >> $SETTING_FILE
 	[ "$qiandao_right" == "1" ] && [ -n "$qiandao_right_setting" ] && echo -e "\"right\"=`echo $qiandao_right_setting | base64_decode`" >> $SETTING_FILE
 	[ "$qiandao_mydigit" == "1" ] && [ -n "$qiandao_mydigit_setting" ] && echo -e "\"mydigit\"=`echo $qiandao_mydigit_setting | base64_decode`" >> $SETTING_FILE
-	ln -sf $SETTING_FILE $qiandao_root/cookie.txt
+	if [ -f "$SETTING_FILE" ];then
+		ln -sf $SETTING_FILE $qiandao_root/cookie.txt
+	else
+		echo_date "检测到你没有填写任何cookie配置！关闭插件！" >> $LOGFILE
+		dbus set qiandao_enable="0"
+		echo "------------------------------ koolshare merlin 自动签到程序 -------------------------------" >> $LOGFILE
+		echo XU6J03M6 >> $LOGFILE
+		exit 1
+	fi
 }
 
 start_sign(){
@@ -76,6 +84,7 @@ start)
 		del_cron >> $LOGFILE
 		echo_date "关闭成功！" >> $LOGFILE
 	fi
+	echo "" >> $LOGFILE
 	echo "------------------------------ koolshare merlin 自动签到程序 -------------------------------" >> $LOGFILE
 	echo XU6J03M6 >> $LOGFILE
 	;;
