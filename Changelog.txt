@@ -1,4 +1,7 @@
 Koolshare Asuswrt-Merlin Let's Encrypt Changelog
 ===========================================
+1.1
+   - update	优化脚本判断。
+
 1.0
    - add	添加自动签到插件。
