@@ -77,6 +77,7 @@ start)
 			echo_date "仅保存设置，签到将在你设定的时间进行..." >> $LOGFILE
 			generate_cookie_conf >> $LOGFILE
 			add_cron >> $LOGFILE
+			dbus set qiandao_action="2"
 			echo_date "保存完毕..." >> $LOGFILE
 		fi
 	else

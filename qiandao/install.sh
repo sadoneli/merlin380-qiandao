@@ -1,4 +1,6 @@
 #! /bin/sh
+
+source /koolshare/scripts/base.sh
 cd /tmp
 cp -rf /tmp/qiandao/qiandao /koolshare/
 cp -rf /tmp/qiandao/res/* /koolshare/res/
@@ -12,4 +14,6 @@ sleep 1
 chmod 755 /koolshare/qiandao/*
 chmod 755 /koolshare/init.d/*
 chmod 755 /koolshare/scripts/qiandao*
+
+dbus set qiandao_action="2"
 

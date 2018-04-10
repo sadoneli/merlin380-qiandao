@@ -11,12 +11,12 @@ fi
 version_old=`cat history/version | awk '{print $1}' | sort -rn |sed -n 1p`
 version_new=`cat config.json.js |grep "version"|cut -d"\"" -f 4`
 md5_old=`cat history/version | sort -nk1 | awk '{print $1}' |sed -n 1p`
-md5_new=` md5sum acme.tar.gz | awk '{print $1}'`
+md5_new=` md5sum qiandao.tar.gz | awk '{print $1}'`
 
-if [ -f ./acme.tar.gz ];then
+if [ -f ./qiandao.tar.gz ];then
 	if [ "$version_old" != "$version_new" ];then
 		mkdir ./history/$version_new/
-		cp ./acme.tar.gz ./history/$version_new/
+		cp ./qiandao.tar.gz ./history/$version_new/
 		echo $version_new $md5_new >> ./history/version
 	fi
 fi
